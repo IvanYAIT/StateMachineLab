@@ -1,46 +1,46 @@
-﻿using System;
+﻿using Player;
 using UnityEngine;
 
-class InvisibleState : AState
+namespace State
 {
-    private PlayerCombat playerCombat;
-    private KeyCode attackInput;
-    private bool isActive;
-    private Color playerSpriteColor;
-
-    public InvisibleState(StateMachine owner, KeyCode attackInput, PlayerCombat playerCombat) : base(owner)
+    class InvisibleState : AState
     {
-        this.attackInput = attackInput;
-        this.playerCombat = playerCombat;
-        playerSpriteColor = playerCombat.GetPlayerSprite().color;
-        isActive = false;
-    }
+        public static string Name = "Invisible";
 
-    public override void Enter()
-    {
-        
-    }
+        private PlayerCombat playerCombat;
+        private KeyCode attackInput;
+        private bool isActive;
+        private Color playerSpriteColor;
 
-    public override void Exit()
-    {
-        playerSpriteColor.a = 1;
-    }
-
-    public override void Update()
-    {
-        if (Input.GetKeyDown(attackInput))
+        public InvisibleState(StateMachine owner, KeyCode attackInput, PlayerCombat playerCombat) : base(owner)
         {
-            if (!isActive)
-            {
-                playerSpriteColor.a /= 2;
-                isActive = true;
-            }
-            else
-            {
-                playerSpriteColor.a *= 2;
-                isActive = false;
-            }
+            this.attackInput = attackInput;
+            this.playerCombat = playerCombat;
+            playerSpriteColor = playerCombat.GetPlayerSprite.color;
+            isActive = false;
         }
-        playerCombat.SetPlayerSpriteColor(playerSpriteColor);
+
+        public override void Enter() { }
+
+        public override void Exit() =>
+            playerSpriteColor.a = 1;
+
+        public override void Update()
+        {
+            if (Input.GetKeyDown(attackInput))
+            {
+                if (!isActive)
+                {
+                    playerSpriteColor.a /= 2;
+                    isActive = true;
+                }
+                else
+                {
+                    playerSpriteColor.a *= 2;
+                    isActive = false;
+                }
+            }
+            playerCombat.SetPlayerSpriteColor(playerSpriteColor);
+        }
     }
 }

@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private GameObject redZone;
-    [SerializeField] private SpriteRenderer playerSprite;
+    public class PlayerCombat : MonoBehaviour
+    {
+        [SerializeField] private Transform firePoint;
+        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private GameObject redZone;
+        [SerializeField] private SpriteRenderer playerSprite;
 
-    public Transform GetFirePoint() => firePoint;
-    public GameObject GetBulletPrefab() => bulletPrefab;
-    public GameObject GetRedZone() => redZone;
-    public SpriteRenderer GetPlayerSprite() => playerSprite;
+        public Transform GetFirePoint => firePoint;
+        public GameObject GetBulletPrefab => bulletPrefab;
+        public GameObject GetRedZone => redZone;
+        public SpriteRenderer GetPlayerSprite => playerSprite;
 
-    public void SetPlayerSpriteColor(Color playerSpritecolor) => playerSprite.color = playerSpritecolor; 
+        public void SetPlayerSpriteColor(Color playerSpritecolor) => playerSprite.color = playerSpritecolor;
+    }
 }

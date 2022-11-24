@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-abstract class AState : UnityEngine.Object
+﻿namespace State
 {
-    protected StateMachine owner;
-
-    public AState(StateMachine owner)
+    abstract class AState : UnityEngine.Object
     {
-        this.owner = owner;
-    }
+        protected StateMachine owner;
 
-    public abstract void Enter();
-    public abstract void Update();
-    public abstract void Exit();
+        public AState(StateMachine owner)
+        {
+            this.owner = owner;
+        }
+
+        public abstract void Enter();
+        public abstract void Update();
+        public abstract void Exit();
+    }
 }

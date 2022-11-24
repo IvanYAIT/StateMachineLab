@@ -1,21 +1,36 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+namespace Player
 {
-    private PlayerMovement playerMovement;
-    private Transform playerTransform;
-
-    void Update()
+    public class PlayerInput : MonoBehaviour
     {
-        playerMovement.Move(playerTransform);
-    }
+        private PlayerMovement playerMovement;
+        private Transform playerTransform;
+        private int stateCount;
 
-    public void Constructor(PlayerMovement playerMovement, Transform playerTransform)
-    {
-        this.playerMovement = playerMovement;
-        this.playerTransform = playerTransform;
+        public static Action<int> onStateChange;
+
+        void Update()
+        {
+            playerMovement.Move(playerTransform);
+        }
+
+        public void ChangeState()
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                stateCount++;
+                if (stateCount >= 3)
+                    stateCount = 0;
+                onStateChange?.Invoke(stateCount);
+            }
+        }
+
+        public void Constructor(PlayerMovement playerMovement, Transform playerTransform)
+        {
+            this.playerMovement = playerMovement;
+            this.playerTransform = playerTransform;
+        }
     }
 }

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Bullet
 {
-    void Update()
+    public class Bullet : MonoBehaviour
     {
-        transform.position += new Vector3(10 * Time.deltaTime, 0);
+        void Update()
+        {
+            transform.position += new Vector3(10 * Time.deltaTime, 0);
+        }
     }
 }

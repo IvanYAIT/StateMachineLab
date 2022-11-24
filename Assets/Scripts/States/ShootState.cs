@@ -1,30 +1,29 @@
-﻿using System;
+﻿using Player;
 using UnityEngine;
 
-class ShootState : AState
+namespace State
 {
-    private PlayerCombat playerCombat;
-    private KeyCode attackInput;
-
-    public ShootState(StateMachine owner, KeyCode attackInput, PlayerCombat playerCombat) : base(owner)
+    class ShootState : AState
     {
-        this.playerCombat = playerCombat;
-        this.attackInput = attackInput;
-    }
+        public static string Name = "Shoot";
 
-    public override void Enter()
-    {
-        
-    }
+        private PlayerCombat playerCombat;
+        private KeyCode attackInput;
 
-    public override void Exit()
-    {
-        
-    }
+        public ShootState(StateMachine owner, KeyCode attackInput, PlayerCombat playerCombat) : base(owner)
+        {
+            this.playerCombat = playerCombat;
+            this.attackInput = attackInput;
+        }
 
-    public override void Update()
-    {
-        if (Input.GetKeyDown(attackInput))
-            Instantiate(playerCombat.GetBulletPrefab(), new Vector3(playerCombat.GetFirePoint().position.x, playerCombat.GetFirePoint().position.y), new Quaternion());
+        public override void Enter() { }
+
+        public override void Exit() { }
+
+        public override void Update()
+        {
+            if (Input.GetKeyDown(attackInput))
+                Instantiate(playerCombat.GetBulletPrefab, new Vector3(playerCombat.GetFirePoint.position.x, playerCombat.GetFirePoint.position.y), new Quaternion());
+        }
     }
 }
