@@ -2,9 +2,9 @@
 {
     abstract class AState : UnityEngine.Object
     {
-        protected StateMachine owner;
+        protected IStateMachine owner;
 
-        public AState(StateMachine owner)
+        public AState(IStateMachine owner)
         {
             this.owner = owner;
         }
